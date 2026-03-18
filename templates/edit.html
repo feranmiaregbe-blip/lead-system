@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Lead</title>
+    <style>
+        body { font-family: Arial; background-color: #f4f6f8; text-align: center; }
+        .container { background: white; padding: 20px; margin: 50px auto; width: 300px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        input { width: 90%; padding: 8px; margin: 10px 0; }
+        button { background-color: black; color: white; padding: 10px; border: none; width: 100%; cursor: pointer; }
+        button:hover { background-color: #333; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h2>Edit Lead</h2>
+    <form method="POST" action="/update/{{ index }}">
+        <input type="text" name="name" value="{{ lead[0] }}"><br>
+        <input type="text" name="location" value="{{ lead[1] }}"><br>
+        <input type="text" name="budget" value="{{ lead[2] }}"><br>
+        <button type="submit">Update Lead</button>
+    </form>
+</div>
+</body>
+</html>
