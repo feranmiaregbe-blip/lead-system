@@ -1,70 +1,63 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Lead System</title>
+    <title>Add Lead</title>
 
     <style>
         body {
-            font-family: Arial;
-            background-color: #f4f6f8;
-            text-align: center;
+            background: #0f127a;
+            font-family: 'Segoe UI';
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .container {
-            background: white;
-            padding: 20px;
-            margin: 50px auto;
+        .form-box {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 12px;
             width: 300px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 15px;
         }
 
         input {
-            width: 90%;
-            padding: 8px;
-            margin: 10px 0;
-            border-radius: 5px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 6px;
         }
 
         button {
-            background-color: black;
-            color: white;
-            padding: 10px;
-            border: none;
             width: 100%;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
+            padding: 10px;
+            background: #22c55e;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-weight: bold;
         }
-        button:hover{
-            background-color: #333;
-        }
-
-        a {
-            display: block;
-            margin-bottom: 15px;
-        }
+        
     </style>
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="form-box">
+    <h2>Add Lead</h2>
 
-<h2>Add New Lead</h2>
+    <form action="/add_lead" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="location" placeholder="Location" required>
+        <input type="text" name="budget" placeholder="Budget" required>
 
-<a href="/leads">View All Leads</a>
-
-<form method="POST" action="/add_lead">
-
-<input type="text" name="name" placeholder="Customer Name" required><br>
-
-<input type="text" name="location" placeholder="Location" required><br>
-
-<input type="number" name="budget" placeholder="Budget" required><br>
-
-<button type="submit">Save Lead</button>
+        <button type="submit">Save Lead</button>
 
 </form>
 

@@ -1,0 +1,7 @@
+name=input("Customer Name:")
+location=input("Preferred location:")
+budget=input("Budget:")
+print("nLead saved succesfully")
+print("Name:",name)
+print("Location:",location)
+print("Budget:",budget)
