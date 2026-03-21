@@ -101,21 +101,9 @@ def login():
         username = request.form["username"]
         password = request.form["password"]
 
-        conn = sqlite3.connect("leads.db")
-        cursor = conn.cursor()
-
-        cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username, password))
-        all_user = cursor.fetchall()
-
-        cursor.execute("SELECT * FROM users WHERE username=? AND password=?",(username,password))
-        user = cursor.fetchone()
-        print("LOGINV RESULT:", user)
-
-        conn.close()
-
-        if user:
+        if username=="admin" and password == "1234":
             session["user"]=username
-            return redirect("/")
+            return redirect("/leads")
         else:
             return "Invalid login-check username/password"
 
@@ -200,4 +188,4 @@ def update_lead(index):
     return redirect("/leads")
 if __name__ == "__main__":
     init_db()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=10000)
