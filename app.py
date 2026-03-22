@@ -98,16 +98,30 @@ def add_lead():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        username = request.form["username"]
-        password = request.form["password"]
+        username = request.form["username"].strip()
+        password = request.form["password"].strip()
 
-        if username=="admin" and password == "1234":
-            session["user"]=username
-            return redirect("/leads")
+        print(" Trying login:", username, password)
+
+        conn = sqlite3.connect("leads.db")
+        cursor = conn.cursor()
+
+        cursor.execute("SELECT * FROM users")
+        all_users = cursor.fetchall()
+        print("ALL USERS:", all_users)
+
+        cursor.execute("SELECT * FROM users WHERE username=? AND password=?", (username,password))
+        user = cursor.fetchone()
+
+        print("USER FOUND:", user)
+
+        conn.close()
+
+        if user:
+            session["user"] = username
+            return redirect("/")
         else:
             return "Invalid login-check username/password"
-
-    return render_template("login.html")
 @app.route("/logout")
 def logout():
     session.pop("user", None)
